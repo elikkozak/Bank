@@ -1,4 +1,6 @@
 import pymysql
+from DB.queries import *
+
 
 HOST = "localhost"
 USER = "root"
@@ -19,17 +21,24 @@ class DB_Manager:
         )
 
     def get_all_transactions(self):
-        # TODO
-        pass
+        with self.connection.cursor() as cursor:
+            cursor.execute(GET_ALL_TRANSACTIONS)
+            return cursor.fetchall()
 
     def add_transactions(self, amount, category, vendor):
-        # TODO
-        pass
+        with self.connection.cursor() as cursor:
+            cursor.execute(ADD_TRANSACTION, [amount, category, vendor])
+            self.connection.commit()
+            cursor.execute(GET_LAST_TRANSACTION)
+            return cursor.fetchone()
 
-    def delete_transactions(self):
-        # TODO
-        pass
+    def delete_transactions(self, transaction_id):
+        with self.connection.cursor() as cursor:
+            cursor.execute(DELETE_TRANSACTION_BY_ID, transaction_id)
+            self.connection.commit()
 
-    def get_transactions_by_categories(self):
-        # TODO
-        pass
+    def get_breakdown_for_every_category(self):
+        with self.connection.cursor() as cursor:
+            cursor.execute(GET_TRANSACTIONS_SUM_FOR_EVERY_CATEGORY)   
+            return cursor.fetchall()     
+
