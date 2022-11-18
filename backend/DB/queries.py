@@ -19,7 +19,7 @@ GET_TRANSACTION_BY_ID = """SELECT * FROM transaction WHERE id = %s"""
 
 DELETE_TRANSACTION_BY_ID = """DELETE FROM transaction WHERE id = %s"""
 
-GET_LAST_TRANSACTION = """SELECT TOP 1 * FROM transaction ORDER BY ID DESC"""
+GET_LAST_TRANSACTION = """SELECT * FROM transaction ORDER BY id DESC LIMIT 1"""
 
 GET_TRANSACTIONS_SUM_FOR_EVERY_CATEGORY = """SELECT category,SUM(amount)
                                             FROM transaction
