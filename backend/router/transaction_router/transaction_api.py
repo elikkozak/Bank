@@ -14,7 +14,7 @@ def get_all_transactions():
 @router.post("/transactions", status_code=status.HTTP_201_CREATED)
 async def add_transaction(request: Request, response: Response):
     req = await request.json()
-    transaction_added = db_manager.add_transactions(req)
+    transaction_added = db_manager.add_transactions(**req)
     return transaction_added
 
 

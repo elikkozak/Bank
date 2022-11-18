@@ -21,13 +21,16 @@ class DB_Manager:
         )
 
     def get_all_transactions(self):
+        self.connection.ping()
         with self.connection.cursor() as cursor:
+
             cursor.execute(GET_ALL_TRANSACTIONS)
             return cursor.fetchall()
 
     def add_transactions(self, amount, category, vendor):
+        self.connection.ping()
         with self.connection.cursor() as cursor:
-            cursor.execute(ADD_TRANSACTION, [amount, category, vendor])
+            cursor.execute(ADD_TRANSACTION, (amount, category, vendor))
             self.connection.commit()
             cursor.execute(GET_LAST_TRANSACTION)
             return cursor.fetchone()
@@ -39,6 +42,8 @@ class DB_Manager:
 
     def get_breakdown_for_every_category(self):
         with self.connection.cursor() as cursor:
-            cursor.execute(GET_TRANSACTIONS_SUM_FOR_EVERY_CATEGORY)   
-            return cursor.fetchall()     
+            cursor.execute(GET_TRANSACTIONS_SUM_FOR_EVERY_CATEGORY)
+            return cursor.fetchall()
 
+
+db_manager = DB_Manager()
