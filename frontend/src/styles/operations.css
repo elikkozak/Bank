@@ -1,0 +1,61 @@
+.operations-container {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.operations-container h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: black;
+  text-align: center;
+}
+
+.input {
+  width: 300px;
+  height: 30px;
+  border: 2px solid #000;
+  border-radius: 25px;
+  margin: 5px 0;
+  font-weight: 600;
+  position: relative;
+  text-indent: 10px;
+}
+
+input::placeholder {
+  font-weight: bold;
+  color: #000;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons-container button {
+  width: 30%;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.deposit-button{
+    background-color: rgb(22, 227, 22);
+}
+
+.withdraw-button{
+    background-color: red;
+}
