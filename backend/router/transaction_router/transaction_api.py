@@ -24,7 +24,7 @@ def delete_transaction(transaction_id, response: Response):
     db_manager.delete_transactions(transaction_id)
 
 
-@router.get("/transactions/rundown", status_code=status.HTTP_200_OK)
+@router.get("/transactions/breakdown", status_code=status.HTTP_200_OK)
 def get_transaction_by_categories():
-    categories_to_total_sum = db_manager.get_breakdown_for_every_category
+    categories_to_total_sum = db_manager.get_breakdown_for_every_category()
     return categories_to_total_sum

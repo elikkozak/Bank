@@ -41,6 +41,7 @@ class DB_Manager:
             self.connection.commit()
 
     def get_breakdown_for_every_category(self):
+        self.connection.ping()
         with self.connection.cursor() as cursor:
             cursor.execute(GET_TRANSACTIONS_SUM_FOR_EVERY_CATEGORY)
             return cursor.fetchall()

@@ -11,7 +11,8 @@ app.include_router(transaction_api.router)
 origins = [
     "http://localhost",
     "http://localhost:3000",
-    "http://localhost:8000/transactions",
+    "http://localhost:3000/transactions",
+    "http://localhost:3000/breakdown",
 ]
 
 app.add_middleware(
