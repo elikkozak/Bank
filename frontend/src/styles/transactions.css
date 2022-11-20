@@ -1,0 +1,9 @@
+.transactions-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.transactions-container h2 {
+  text-align: center;
+}
