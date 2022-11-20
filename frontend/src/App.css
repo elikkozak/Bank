@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+body,
+html,
+#root,
+.routes-container {
+  height: 100%;
+  width: 100%;
+}

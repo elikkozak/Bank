@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <Router>
-      <div>
+      <div className="routes-container">
         <Navbar/>
         <Route exact path="/" render={() => <Transactions />}></Route>
         <Route exact path="/operations" render={() => <Operations />}></Route>

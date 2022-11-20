@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { CanvasJSChart } from "canvasjs-react-charts";
+import "../styles/breakdown.css";
 
 export default function Breakdown() {
   const [breakdownOfTransactions, setBreakdownOfTransactions] = useState([]);
@@ -15,17 +17,39 @@ export default function Breakdown() {
   useEffect(() => {
     getSumOfTransactionByCategory();
   }, []);
+
+  const getChartOptions = function(operationType){
+    return {
+      animationEnabled: true,
+      title: {
+        text: "Breakdown",
+      },
+      data: [
+        {
+          type: "pie",
+          startAngle: 75,
+          toolTipContent: "<b>{label}</b>: {y}$",
+          showInLegend: "true",
+          legendText: "{label}",
+          indexLabelFontSize: 16,
+          indexLabel: "{label}: {y}$",
+          dataPoints: breakdownOfTransactions.map((category) => ({
+            y: category.sum,
+            label: category.category,
+          })),
+        },
+      ],
+    };
+  }
+
   return (
-    <div className="breakdown">
-      <h1>Breakdown</h1>
-      <ul>
-        {breakdownOfTransactions.map((category, index) => (
-          <li key={index}>
-            <span>{category.category}: </span>
-            <span>{category.sum}$</span>
-          </li>
-        ))}
-      </ul>
+    <div className="breakdown-container">
+      {/* <h1>Breakdown</h1> */}
+      <div className="breakdown">
+        <CanvasJSChart options={getChartOptions()} />
+      </div>
+      
+   
     </div>
   );
 }
