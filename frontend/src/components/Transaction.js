@@ -15,8 +15,7 @@ export default function Transaction(props) {
         <small>{transaction.category}</small>
       </h3>
       <span>{transaction.amount} USD</span>
-      {/* <i className="fas fa-trash-alt" ></i> */}
-      <i class="fa fa-trash" onClick={deleteTransaction}></i>
+      <i className="fa fa-trash" onClick={deleteTransaction}></i>
     </div>
   );
 }

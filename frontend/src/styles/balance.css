@@ -1,0 +1,13 @@
+.balance {
+  position: relative;
+  font-size: 20px;
+  margin-left: 85%;
+}
+
+.neg {
+  color: red;
+}
+
+.pos {
+  color: rgb(17, 226, 17);
+}

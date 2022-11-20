@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Transaction from "./Transaction";
 import axios from "axios";
 import "../styles/transactions.css";
+import Balance from "./Balance";
 
 export default function Transactions() {
   const [transactions, setTransactions] = useState([]);
@@ -24,6 +25,7 @@ export default function Transactions() {
   return (
     <div className="transactions-container">
       <h2>Transactions</h2>
+      <Balance/>
       {transactions.map((transaction) => (
         <Transaction
           key={transaction.id}

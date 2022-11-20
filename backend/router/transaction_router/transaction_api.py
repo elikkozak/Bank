@@ -10,6 +10,11 @@ def get_all_transactions():
     all_transaction = db_manager.get_all_transactions()
     return all_transaction
 
+@router.get("/balance", status_code=status.HTTP_200_OK)
+def get_balance():
+    balance = db_manager.get_balance()
+    return balance
+
 
 @router.post("/transactions", status_code=status.HTTP_201_CREATED)
 async def add_transaction(request: Request, response: Response):

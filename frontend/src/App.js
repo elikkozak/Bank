@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className="routes-container">
-        <Navbar/>
+        <Navbar />
         <Route exact path="/" render={() => <Transactions />}></Route>
         <Route exact path="/operations" render={() => <Operations />}></Route>
         <Route exact path="/breakdown" render={() => <Breakdown />}></Route>

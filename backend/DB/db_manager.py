@@ -46,5 +46,11 @@ class DB_Manager:
             cursor.execute(GET_TRANSACTIONS_SUM_FOR_EVERY_CATEGORY)
             return cursor.fetchall()
 
+    def get_balance(self):
+        self.connection.ping()
+        with self.connection.cursor() as cursor:
+            cursor.execute(GET_BALANCE)
+            return cursor.fetchone()
+
 
 db_manager = DB_Manager()

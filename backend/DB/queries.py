@@ -24,3 +24,6 @@ GET_LAST_TRANSACTION = """SELECT * FROM transaction ORDER BY id DESC LIMIT 1"""
 GET_TRANSACTIONS_SUM_FOR_EVERY_CATEGORY = """SELECT category,SUM(amount) as sum
                                             FROM transaction
                                             GROUP BY category;"""
+
+GET_BALANCE = """SELECT SUM(amount) as balance
+            FROM transaction"""
