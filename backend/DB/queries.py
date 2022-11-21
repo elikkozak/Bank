@@ -27,3 +27,5 @@ GET_TRANSACTIONS_SUM_FOR_EVERY_CATEGORY = """SELECT category,SUM(amount) as sum
 
 GET_BALANCE = """SELECT SUM(amount) as balance
             FROM transaction"""
+
+GET_CATEGORIES = """SELECT * FROM category """

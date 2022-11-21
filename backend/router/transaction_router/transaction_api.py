@@ -33,3 +33,8 @@ def delete_transaction(transaction_id, response: Response):
 def get_transaction_by_categories():
     categories_to_total_sum = db_manager.get_breakdown_for_every_category()
     return categories_to_total_sum
+
+@router.get("/categories", status_code=status.HTTP_200_OK)
+def get_all_categories():
+    categories= db_manager.get_all_categories()
+    return categories

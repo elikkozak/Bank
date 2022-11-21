@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/operations.css";
 
@@ -13,6 +13,18 @@ export default function Operations() {
     let target = e.target;
     setOperationInputs({ ...operationInputs, [target.name]: target.value });
   };
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function getAllCategories() {
+      let response = await axios.get("http://localhost:8000/categories");
+      let allCategories = response["data"];
+      setCategories(allCategories);
+    }
+
+    getAllCategories();
+  }, []);
 
   const addTransaction = function (transaction) {
     axios({
@@ -35,13 +47,17 @@ export default function Operations() {
     <div className="operations-container">
       <h2>Insert transactions</h2>
       <div className="inputs-container">
-        <input
+        <select
           className="input"
-          value={operationInputs.amount}
-          name="amount"
-          placeholder="Transaction amount"
+          value={operationInputs.category}
+          name="category"
+          placeholder="Transaction category"
           onChange={inputHandler}
-        ></input>
+        >
+          {categories.map((category) => (
+            <option value={category["category"]}>{category["category"]}</option>
+          ))}
+        </select>
         <input
           className="input"
           value={operationInputs.vendor}
@@ -51,9 +67,9 @@ export default function Operations() {
         ></input>
         <input
           className="input"
-          value={operationInputs.category}
-          name="category"
-          placeholder="Transaction category"
+          value={operationInputs.amount}
+          name="amount"
+          placeholder="Transaction amount"
           onChange={inputHandler}
         ></input>
       </div>

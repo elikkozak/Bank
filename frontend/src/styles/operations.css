@@ -23,13 +23,13 @@
   height: 30px;
   border: 2px solid #000;
   border-radius: 25px;
-  margin: 5px 0;
+  margin: 8px 0;
   font-weight: 600;
   position: relative;
   text-indent: 10px;
 }
 
-input::placeholder {
+.input::placeholder {
   font-weight: bold;
   color: #000;
 }
@@ -52,10 +52,10 @@ input::placeholder {
   margin-left: 20px;
 }
 
-.deposit-button{
-    background-color: rgb(22, 227, 22);
+.deposit-button {
+  background-color: rgb(22, 227, 22);
 }
 
-.withdraw-button{
-    background-color: red;
+.withdraw-button {
+  background-color: red;
 }

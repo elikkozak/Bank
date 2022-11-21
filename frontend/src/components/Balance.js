@@ -9,11 +9,16 @@ export default function Balance(props) {
     async function getBalance() {
       let response = await axios.get("http://localhost:8000/balance");
       let currBalance = response["data"];
-      setBalance(currBalance["balance"]);
+      setBalance(currBalance["balance"] || 0);
     }
 
     getBalance();
-  }, []); 
+  }, []);
 
-  return <div className={`balance ${balance < 0 ? "neg" : "pos"}`}>Balance:<br></br>{balance} USD</div>;
+  return (
+    <div className={`balance ${balance < 0 ? "neg" : "pos"}`}>
+      Balance:<br></br>
+      {balance} USD
+    </div>
+  );
 }
