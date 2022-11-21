@@ -21,42 +21,59 @@ class DB_Manager:
         )
 
     def get_all_transactions(self):
-        self.connection.ping()
-        with self.connection.cursor() as cursor:
-
-            cursor.execute(GET_ALL_TRANSACTIONS)
-            return cursor.fetchall()
+        try:
+            self.connection.ping()
+            with self.connection.cursor() as cursor:
+                cursor.execute(GET_ALL_TRANSACTIONS)
+                return cursor.fetchall()
+        except TypeError as e:
+            print(e)
 
     def add_transactions(self, amount, category, vendor):
-        self.connection.ping()
-        with self.connection.cursor() as cursor:
-            cursor.execute(ADD_TRANSACTION, (amount, category, vendor))
-            self.connection.commit()
-            cursor.execute(GET_LAST_TRANSACTION)
-            return cursor.fetchone()
+        try:
+            self.connection.ping()
+            with self.connection.cursor() as cursor:
+                cursor.execute(ADD_TRANSACTION, (amount, category, vendor))
+                self.connection.commit()
+                cursor.execute(GET_LAST_TRANSACTION)
+                return cursor.fetchone()
+        except TypeError as e:
+            print(e)
 
     def delete_transactions(self, transaction_id):
-        with self.connection.cursor() as cursor:
-            cursor.execute(DELETE_TRANSACTION_BY_ID, transaction_id)
-            self.connection.commit()
+        try:
+            with self.connection.cursor() as cursor:
+                cursor.execute(DELETE_TRANSACTION_BY_ID, transaction_id)
+                self.connection.commit()
+        except TypeError as e:
+            print(e)
 
     def get_breakdown_for_every_category(self):
-        self.connection.ping()
-        with self.connection.cursor() as cursor:
-            cursor.execute(GET_TRANSACTIONS_SUM_FOR_EVERY_CATEGORY)
-            return cursor.fetchall()
+        try:
+            self.connection.ping()
+            with self.connection.cursor() as cursor:
+                cursor.execute(GET_TRANSACTIONS_SUM_FOR_EVERY_CATEGORY)
+                return cursor.fetchall()
+        except TypeError as e:
+            print(e)
 
     def get_balance(self):
-        self.connection.ping()
-        with self.connection.cursor() as cursor:
-            cursor.execute(GET_BALANCE)
-            return cursor.fetchone()
+        try:
+            self.connection.ping()
+            with self.connection.cursor() as cursor:
+                cursor.execute(GET_BALANCE)
+                return cursor.fetchone()
+        except TypeError as e:
+            print(e)
 
     def get_all_categories(self):
-        self.connection.ping()
-        with self.connection.cursor() as cursor:
-            cursor.execute(GET_CATEGORIES)
-            return cursor.fetchall()
+        try:
+            self.connection.ping()
+            with self.connection.cursor() as cursor:
+                cursor.execute(GET_CATEGORIES)
+                return cursor.fetchall()
+        except TypeError as e:
+            print(e)
 
 
 db_manager = DB_Manager()

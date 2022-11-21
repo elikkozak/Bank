@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status, Response, Request
+from fastapi import APIRouter, HTTPException, status, Response, Request
 from DB.db_manager import db_manager
 
 
@@ -18,10 +18,14 @@ def get_balance():
 
 @router.post("/transactions", status_code=status.HTTP_201_CREATED)
 async def add_transaction(request: Request, response: Response):
-    req = await request.json()
-    # TODO add category if category does not exitst...
-    transaction_added = db_manager.add_transactions(**req)
-    return transaction_added
+    try:
+        req = await request.json()
+        transaction_added = db_manager.add_transactions(**req)
+        return transaction_added
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST
+        )
 
 
 @router.delete("/transactions/{transaction_id}", status_code=status.HTTP_204_NO_CONTENT)
